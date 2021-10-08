@@ -11,57 +11,49 @@ type: "post"
 draft: false
 ---
 
-### Introduction
+## Introduction
 
 There is a saying that goes (more or less) by:
 
 > In a majority electoral system, the voters choose their representatives. With electoral districts, the representatives choose their constituencies.
 
-Because new district boundaries are drawn by incumbents every new Census[1] in the United States, it is of their critical interest to do so in ways to include only the voters that maxes out their chances to remain in power. Gerrymandered districts are easy to spot (at first, but it is complicated[2]): they usually have deeply crooked lines, like the closed-up map of North Carolina 2013 districts, as opposed to “straighter” district lines, in the 2017 district redraw:
+Because new district boundaries are drawn by incumbents every new Census^[This happens in the United States due “one person, one vote” rule, that enforce that all electoral districts have the same number of people (_Reynolds v. Sims_, 377 U.S. 533 (1964)). Not every country with electoral districts do redistricting, at least not that often.] in the United States, it is of their critical interest to do so in ways to include only the voters that maxes out their chances to remain in power. Enter gerrymandering, that Wikipedia best describes as _(...) a practice intended to establish an arguably unfair political advantage for a particular party or group by manipulating the boundaries of electoral districts, which is most commonly used in first-past-the-post electoral systems_.  Gerrymandered districts are easy to spot (at first, but it is complicated^[To this day, there is no definite, official measure to identify gerrymandered districts (see Wang (2016)).]): they usually have deeply crooked lines, like the closed-up map of North Carolina 2013 districts, as opposed to “straighter” district lines, in the 2017 district redraw:
+
+<p align="center">
+![](E:/03_pesquisa/02_blog/github/blog_repo/content/post/visualizing_gerrymandering_1/00_image.png)
+</p>
 
 
-![](/post/visualizing_gerrymandering_1/00_image.png)
+Gerrymandering is known for more than 200 years, but the Supreme Court only gave attention to the matter 172 years after it was first acknowledged^[_Davis v. Bandemer_, 478 U.S. 109 (1986)]. Worse even, the decision was short lived, as the Court ruled in 2019 partisan gerrymandering could not be judged on constitutional grounds. Still, the Court can rule over racial gerrymandering cases, in which the ruling party seeks to diminish the power of a racial group. However, as partisanship is strong across racial groups^[https://www.pewresearch.org/2020/09/23/the-changing-racial-and-ethnic-composition-of-the-u-s-electorate/], it can be an instrument of partisan gerrymandering.
 
 
+## Racial gerrymandering: the case of North Carolina
 
-Gerrymandering is known for more than 200 years, but the Supreme Court only gave attention to it 172 years after it was first acknowledged[3]. Worse even, the decision was short lived, as the Court ruled in 2019 partisan gerrymandering could not be judged on constitutional grounds. Still, the Court still can rule over racial gerrymandering cases, in which the ruling party seeks to diminish the power of a racial group. However, as partisanship is strong across racial groups[4], it can be an instrument of partisan gerrymandering.
+In general, gerrymandering comes in two flavors: “packing” and “cracking”. **Cracking** is more straightforward. It is the diluting of a group’s political power by dividing it through two or more districts. **Packing** is the opposite: is the concentration of members of a group into few districts to ensure the majority of districts vote for the ruling party. The packed districts are some kind of collateral damage that ensures the majority of districts will vote for the ruling party. Because it is hard to divide voters based on partisanship, as 41% of Americans are not party-affiliated^[https://www.nytimes.com/2017/05/22/us/politics/supreme-court-north-carolina-congressional-districts.html], racial gerrymandering comes as an attractive alternative. 
 
+North Carolina lost a Supreme Court case of racial gerrymandering against its African-American population in 2017 and had to do redistricting. In the state maps below, each small filled polygon^[The polygons are census tracts with 2010 Census data.] is in a shade representing the % of the population that is black, and the electoral districts are delimited by the black lines.
 
-### Racial gerrymandering: the case of North Carolina
+<p align="center">
+![](E:/03_pesquisa/02_blog/github/blog_repo/content/post/visualizing_gerrymandering_1/01_image.png)
+</p>
 
-In general, gerrymandering comes in two flavors: “packing” and “cracking”. **Cracking** is more straightforward. It is the diluting of a group’s political power by dividing it through two or more districts. **Packing** is the opposite: is the concentration of members of a group into few districts to ensure the majority of districts vote for the ruling party.
-
-North Carolina lost a Supreme Court case of racial gerrymandering against its African-American population in 2017[5] and had to do redistricting. In the state maps below, each small filled polygon[6] is in a shade representing the % of the population that is black, and the electoral districts are delimited by the black lines.
-
-
-![](/post/visualizing_gerrymandering_1/01_image.png)
-
-
-As of 2019, a whopping 83% of Blacks identified themselves as Democrat or Democrat-leaning[7], meaning a Republican incumbent might want to diminish Black representativeness in their state when redistricting. As it is possible to see in the state maps above, black-majority areas are concentrated in few districts.
+As of 2019, a whopping 83% of Blacks identified themselves as Democrat or Democrat-leaning^[https://www.pewresearch.org/fact-tank/2020/10/21/key-facts-about-black-eligible-voters-in-2020-battleground-states/], meaning a Republican incumbent might want to diminish Black representativeness in their state when redistricting. As it is possible to see in the state maps above, black-majority areas are concentrated in few districts.
 
 The maps below focus on the before-after comparison of the 12th and 1st district from North Carolina, where in both is possible to see how the districts were “stretched” to accommodate as many black-majority regions as possible in 2013.
 
+<p align="center">
+![](E:/03_pesquisa/02_blog/github/blog_repo/content/post/visualizing_gerrymandering_1/02_image.png)
+</p>
+<p align="center">
+![](E:/03_pesquisa/02_blog/github/blog_repo/content/post/visualizing_gerrymandering_1/03_image.png)
+</p>
 
-![](/post/visualizing_gerrymandering_1/02_image.png)
-
-![](/post/visualizing_gerrymandering_1/03_image.png)
-
-
+While there is no solution in sight, the practice of gerrymandering is being perfected by state legislatures, each decade. With wider and cheaper accessibility of computational capacity and the availability of GIS software since the 1990s, it has been since then possible to achieve better and better voter-selection through more “precise” dristrict drawing. 
 
 ***
 
-[1] This happens in the United States due “one person, one vote” rule ( _Reynolds v. Sims_, 377 U.S. 533 (1964)). Not every country with electoral districts do redistricting, at least and not that often.
+**References**
 
-[2] To this day, there is no definite, official measure to identify gerrymandered districts (see Wang (2016)).
-
-[3] _Davis v. Bandemer_, 478 U.S. 109 (1986)
-
-[4] https://www.pewresearch.org/2020/09/23/the-changing-racial-and-ethnic-composition-of-the-u-s-electorate/
-
-[5] https://www.nytimes.com/2017/05/22/us/politics/supreme-court-north-carolina-congressional-districts.html
-
-[6] The polygons are census tracts with 2010 Census data.
-
-[7] https://www.pewresearch.org/fact-tank/2020/10/21/key-facts-about-black-eligible-voters-in-2020-battleground-states/
+Wang, S. S. H. (2016). Three tests for practical evaluation of partisan gerrymandering. Stan. L. Rev., 68, 1263.
 
 _Census data and shapefiles of this post were obtained in IPSUM NHGIS_ (Manson et al., 2021) http://doi.org/10.18128/D050.V16.0
