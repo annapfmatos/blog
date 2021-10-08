@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Anna Paula Matos</title>
+    <link>https://annamatos.netlify.app/tags/r/</link>
+    <description>Recent content in R on Anna Paula Matos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://annamatos.netlify.app/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visualizing Gerrymandering (part 1)</title>
+      <link>https://annamatos.netlify.app/post/visualizing_gerrymandering_1/visualizing_gerrymandering/</link>
+      <pubDate>Tue, 05 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://annamatos.netlify.app/post/visualizing_gerrymandering_1/visualizing_gerrymandering/</guid>
+      <description>IntroductionThere is a saying that goes (more or less) by:
+In a majority electoral system, the voters chooses their representatives. With electoral districts, the representatives choose their constituencies.
+Because new district boundaries are drawn by incumbents every new Census[1] in the United States, it is of their critical interest to do so in ways to include only the voters that maxes out their chances to remain in power.</description>
+    </item>
+    
+  </channel>
+</rss>
