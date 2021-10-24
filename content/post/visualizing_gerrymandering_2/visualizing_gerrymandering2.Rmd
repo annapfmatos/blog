@@ -23,14 +23,15 @@ colnames(race) <- colnames_race
 
 ```
  
-
-## Introduction
+# Introduction
 
 In this second part of the [North Carolina racial gerrymandering analysis](https://annamatos.netlify.app/post/visualizing_gerrymandering_1/visualizing_gerrymandering/) we are going to delve into the code and some idiosyncrasies around Census data.
 
 There is a myriad of US map data packages that  such as `USAboundaries`. Although convenient, those packages are usually structured to display vector based data stored in its repository, which means there is a possibility for those packages to have a limited number geographic unities available or to be outdated. For instance: having in mind that whenever the Court decides against congressional districts boundaries such as the case of North Carolina in 2017, a new set of districts are redrawn and new polygons are presented. To maintain packages with congressional districts, one must be vigilant to such judicial decisions, which can be somewhat strenuous.
 
 Additionally, features for georreferencing census data might not be present or including them not be as straightforward as obtaining the shapefiles from the original source. For those reasons, when it comes to meshing census data and US geospatial information, manually downloading the shapefiles at [IPUMS NHGIS](https://www.nhgis.org/) is a great way to go^[IPUMS is currently developing an API to access data from all their services, including NHGIS (https://developer.ipums.org/docs/apiprogram/), which means in a near future their data can be obtained without the need of reaching their portal.]. When doing queries at NHGIS, the platform promptly informs which kind of census information is available for each desired geographic level, allowing for the user to know for the get go what they will be able to with what the data. Another benefit from extracting data directly from NHGIS is not needing to worry about issues such CRS mismatch between the files^[CRS are a theme large enough to deserve its own post. More about it soon.].
+
+# Coding
 
 Merging census tracts polygons with their respective demographic information obtained at NHGIS is pretty simple, one only needs to use the unique identifier stored in `GISJOIN` column that is included both in the shapefile and census data. Since we aim to just visualizing the information, only the `sf` package suffices. With having `race` census data grouped into census tracts previously loaded in a data frame, merging of the shapefile with the census `tract` goes as:
 
