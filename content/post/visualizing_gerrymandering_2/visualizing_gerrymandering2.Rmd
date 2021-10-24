@@ -1,0 +1,93 @@
+---
+title: "Visualizing Gerrymandering (part 2)"
+author: "Anna Paula Matos"
+date: '2021-10-14'
+categories: R
+tags:
+- Maps
+- R
+- Politics
+type: "post"
+draft: true
+---
+
+```{r, echo = FALSE,include = FALSE}
+library(tidyverse)
+library(sf)
+library(RColorBrewer)
+
+colnames_race <- read.csv(
+  "nhgis0005_ds172_2010_tract.csv", stringsAsFactors = F, header = F, nrows = 1, as.is = T)
+race <- read.csv("nhgis0005_ds172_2010_tract.csv", stringsAsFactors = F, skip = 1)
+colnames(race) <- colnames_race
+
+```
+ 
+
+## Introduction
+
+In this second part of the [North Carolina racial gerrymandering analysis](https://annamatos.netlify.app/post/visualizing_gerrymandering_1/visualizing_gerrymandering/) we are going to delve into the code and some idiosyncrasies around Census data.
+
+There is a myriad of US map data packages that  such as `USAboundaries`. Although convenient, those packages are usually structured to display vector based data stored in its repository, which means there is a possibility for those packages to have a limited number geographic unities available or to be outdated. For instance: having in mind that whenever the Court decides against congressional districts boundaries such as the case of North Carolina in 2017, a new set of districts are redrawn and new polygons are presented. To maintain packages with congressional districts, one must be vigilant to such judicial decisions, which can be somewhat strenuous.
+
+Additionally, features for georreferencing census data might not be present or including them not be as straightforward as obtaining the shapefiles from the original source. For those reasons, when it comes to meshing census data and US geospatial information, manually downloading the shapefiles at [IPUMS NHGIS](https://www.nhgis.org/) is a great way to go^[IPUMS is currently developing an API to access data from all their services, including NHGIS (https://developer.ipums.org/docs/apiprogram/), which means in a near future their data can be obtained without the need of reaching their portal.]. When doing queries at NHGIS, the platform promptly informs which kind of census information is available for each desired geographic level, allowing for the user to know for the get go what they will be able to with what the data. Another benefit from extracting data directly from NHGIS is not needing to worry about issues such CRS mismatch between the files^[CRS are a theme large enough to deserve its own post. More about it soon.].
+
+Merging census tracts polygons with their respective demographic information obtained at NHGIS is pretty simple, one only needs to use the unique identifier stored in `GISJOIN` column that is included both in the shapefile and census data. Since we aim to just visualizing the information, only the `sf` package suffices. With having `race` census data grouped into census tracts previously loaded in a data frame, merging of the shapefile with the census `tract` goes as:
+
+```{r, eval = FALSE, include = TRUE}
+
+tract <- read_sf("US_tract_2010.shp", stringsAsFactors = F)
+
+nc_map  <- merge(tract, race, by = "GISJOIN", stringsAsFactors = F, skip = 1) %>%
+  mutate(across(starts_with("H7X"), as.numeric(as.character),
+         p_black = H7X003/H7X001)) %>%
+  filter(STATEFP10 == 37)
+
+# 37 is the number of the state of North Carolina in the Census.
+```
+
+This produces the visualization of racial composition of the census tracts used in all maps in the first part. Since by itself it is not that useful for visualizing gerrymandering, it was also needed to obtain the shapefiles for congressional districts (one for 2013 and another for 2017 boundaries. Here, the 2013 districts polygons vector is stored in `cd_2013`). The `sf` package works well with `ggplot2`, so it is just a matter to use the districts as a second layer over the census tracts.
+
+```{r, eval = FALSE, include = TRUE}
+
+# Congressional districts - 2013
+map01 <- ggplot(cd2013) +
+  geom_sf(data = nc_map, aes(fill = p_black), color = NA) +
+  scale_fill_gradient2(
+    low = "#990000", high = "#004C99", midpoint = 0.5, labels = scales::percent) +
+  geom_sf(colour = "black", alpha = 0.2, size = 0.5) +
+  labs(fill = "Blacks") +
+  theme_void()
+```
+
+![](/post/visualizing_gerrymandering_2/image01.png){width=70%}
+
+Now, I opted to hid my axis with `theme_void`, however, when we call `geom_sf` the stored coordinates from the vector are used as axis. We can zoom in our map by setting the minimum and maximum axis ticks in our ggplot with the `coord_sf` function. Just as everything CRS-wise, it is necessary to assign the CRS used in the `crs` argument when doing this. I opted for WGS84^[It is also possible to retrieve the CRS from the vector using `st_crs`. Nonetheless, it needs to be assigned into the `crs` argument.] for being more practical (the CRS most used in data from the US government, such as the Census, is the NAD83).
+
+
+```{r, eval = FALSE, include = TRUE}
+
+# 12th District - 2013
+map03 <- ggplot(cd2013[cd2013$NAMELSAD %in% c("Congressional District 12"),]) +
+  geom_sf(data = nc_map, aes(fill = p_black), color = NA) +
+  scale_fill_gradient2(
+    low = "#990000", high = "#004C99", midpoint = 0.5, labels = scales::percent) +
+  geom_sf(colour = "#00CC00", alpha = 0.1, size = 1) +
+  coord_sf(xlim = c(-081, -079.6), ylim = c(+35,+36.3),
+           crs = "+proj=longlat +datum=WGS84") +
+  theme(panel.background = element_rect(fill = NA),
+        panel.border = element_rect(linetype = "solid", fill = NA),
+        axis.ticks.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_blank()) 
+```
+
+![](/post/visualizing_gerrymandering_2/image02.png){width=50%}
+
+**Afterthought**: some people asked me about the chosen color scheme for the proportion of black population per census tract. As I tried to bring the question of racial gerrymandering as partisan instrument and since African Americans overwhelmingly vote for the Democratic Party, the blue color to represent them was intentional :)
+
+***
+**References**
+
+_Census data and shapefiles of this post were obtained in IPSUM NHGIS_ (Manson et al., 2021) http://doi.org/10.18128/D050.V16.0
