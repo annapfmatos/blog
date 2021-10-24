@@ -37,11 +37,11 @@ weight = 4
     startLevel = 2
   [markup.highlight]
     codeFences = true
-    guessSyntax = false
+    guessSyntax = true
     hl_Lines = ""
     lineNoStart = 1
     lineNos = true
-    lineNumbersInTable = false
+    lineNumbersInTable = true
     noClasses = true
     style = "dracula"
     tabWidth = 4
@@ -86,9 +86,9 @@ weight = 4
   [[params.social]]
     name = "github"
     link = "https://github.com/annapfmatos"
- # [[params.social]]
- #   name = "linkedin"
- #   link = "https://www.linkedin.com/company/github/"
+  [[params.social]]
+    name = "linkedin"
+    link = "https://www.linkedin.com/in/anna-paula-ferrari-matos-8906509b"
   [[params.social]]
     name = "email"
     link = "annapfmatos@gmail.com"  # no need for "mailto:" in the head
