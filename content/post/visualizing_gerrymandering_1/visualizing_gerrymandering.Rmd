@@ -11,7 +11,7 @@ type: "post"
 draft: false
 ---
 
-## Introduction
+# Introduction
 
 There is a saying that goes (more or less) by:
 
@@ -25,7 +25,7 @@ Because new district boundaries are drawn by incumbents every new Census^[This h
 Gerrymandering is known for more than 200 years, but the Supreme Court only gave attention to the matter 172 years after it was first acknowledged^[_Davis v. Bandemer_, 478 U.S. 109 (1986)]. Worse even, the decision was short lived, as the Court ruled in 2019 partisan gerrymandering could not be judged on constitutional grounds. Still, the Court can rule over racial gerrymandering cases, in which the ruling party seeks to diminish the power of a racial group. However, as partisanship is strong across racial groups^[https://www.pewresearch.org/2020/09/23/the-changing-racial-and-ethnic-composition-of-the-u-s-electorate/], it can be an instrument of partisan gerrymandering.
 
 
-## Racial gerrymandering: the case of North Carolina
+# Racial gerrymandering: the case of North Carolina
 
 In general, gerrymandering comes in two flavors: “packing” and “cracking”. **Cracking** is more straightforward. It is the diluting of a group’s political power by dividing it through two or more districts. **Packing** is the opposite: is the concentration of members of a group into few districts to ensure the majority of districts vote for the ruling party. In a sense, the packed districts are some kind of collateral damage that ensures the majority of districts will vote for the ruling party. Because it is hard to divide voters based on partisanship, as 41% of Americans are not party-affiliated^[https://news.gallup.com/poll/343976/quarterly-gap-party-affiliation-largest-2012.aspx], racial gerrymandering comes as an attractive alternative. 
 
