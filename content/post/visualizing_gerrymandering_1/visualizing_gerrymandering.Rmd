@@ -1,6 +1,6 @@
 ---
 title: Visualizing Gerrymandering (part 1)
-author: "Anna Paula Matos"
+author: "Anna Matos"
 date: '2021-10-05'
 categories: R
 tags:
@@ -51,3 +51,4 @@ While there is no solution in sight, the practice of gerrymandering is being per
 Wang, S. S. H. (2016). Three tests for practical evaluation of partisan gerrymandering. Stan. L. Rev., 68, 1263.
 
 _Census data and shapefiles of this post were obtained in IPSUM NHGIS_ (Manson et al., 2021) http://doi.org/10.18128/D050.V16.0
+
