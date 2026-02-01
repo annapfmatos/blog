@@ -1,6 +1,6 @@
 ---
 title: "Visualizing Gerrymandering (part 2)"
-author: "Anna Paula Matos"
+author: "Anna Matos"
 date: '2021-10-14'
 categories: R
 tags:
@@ -92,3 +92,4 @@ map03 <- ggplot(cd2013[cd2013$NAMELSAD %in% c("Congressional District 12"),]) +
 **References**
 
 _Census data and shapefiles of this post were obtained in IPSUM NHGIS_ (Manson et al., 2021) http://doi.org/10.18128/D050.V16.0
+
