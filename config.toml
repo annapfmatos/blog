@@ -1,6 +1,6 @@
 baseURL = "https://annamatos.netlify.app"
 languageCode = "en-us"
-title = "Anna Paula Matos"
+title = "Anna Matos"
 theme = "cactus"
 # copyright = "You"
 disqusShortname = "example" # Used when comments is enabled. Cactus will use site title if not set
